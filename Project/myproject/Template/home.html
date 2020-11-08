@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Ernst_%26_Young_logo.svg" width="30" height="30" class="d-inline-block align-top" alt=""></a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="signup">Home</a></li>
+      <li><a href="/upload">Upload file</a></li>
+      <li><a href="#">Calculate</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
+
+      </a></li>
+      <li ><a href="/myapp/logout"><span class="glyphicon glyphicon-log-in" ></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+
+
+
+
+</body>
+</html>

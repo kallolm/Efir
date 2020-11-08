@@ -1,0 +1,18 @@
+{% extends "login1.html" %}
+{% block title %}
+My Hello Page
+{% endblock %}
+{% block content %}
+<div class="container">
+  <center>
+        <form method="POST" style="padding-top:100px">
+        {% csrf_token %}
+        {{form.as_p}}
+            <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Login</button>
+        </form>
+        <div style="padding-top:10px">
+        Don't have an account? <a href="/myapp/signup" target="blank"><strong>register here</strong></a>!
+        <div>
+        </center>
+    </div>
+{% endblock %}
