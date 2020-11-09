@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'myapp',
     'intrestcalc'
 ]
@@ -122,3 +123,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
+CRISPY_TEMPLATE_PACK = 'uni_form'

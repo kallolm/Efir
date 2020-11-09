@@ -8,17 +8,14 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib import messages
 from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
-
-def upload(request):
-    return render(request, "uploadfile.html")
-
-
+@login_required
 def home(request):
     messages.info(request, f"You are now logged in as ")
     return render(request, 'home.html', {"messages": messages})
 
-
+@login_required
 def logout_method(request):
     logout(request)
     messages.info(request, "logged out ")
@@ -54,4 +51,4 @@ def login_request(request):
 class SignUpView(generic.CreateView):
     form_class = UserCreationForm
     success_url = "/myapp"
-    template_name = 'signup.html'
+    template_name = 'login.html'

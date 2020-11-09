@@ -1,46 +1,40 @@
 {% extends "home.html" %}
 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-
 {% block content %}
 
 <center>
 
   <div>
-    <br>
-    <input type="file" name="inputfile" id="inputfile">
-    <br>
-    <input type="button" class="btn btn-primary" id="viewfile" value="Upload">
+    <form class="someclass" name ="someclass"method="POST" style="padding-top:100px" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form.as_p}}
+      <input type="submit" class="btn btn-primary" id="viewfile" value="Upload">
+    </form>
+    <input type="button" class="btn btn-primary" id="validate" value="Validate" onclick="myfuncion()">
+    <div>
+<div class="container">
+      {% if tables %}
+      <table class="table-hover">
+        {{ tables|safe}}
+      </table>
+      {% endif %}
+      </div>
 
+      <div class="container">
+        <table class="table table-bordered" id="tableMain">
+          <thead>
+          </thead>
+          <tbody>
 
-  </div>
-  <br>
-  <div class="container">
-    <table class="table table-bordered" id="tableMain">
-      <thead>
-      </thead>
-      <tbody>
-
-      </tbody>
-    </table>
-
-  </div>
+          </tbody>
+        </table>
+        </div>
 </center>
-<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
 
-</script>>
+{% block javascript %}
 <script>
-  $(document).ready(function() {
-
-    $('#viewfile').click(function() {
+function myfuncion() {
+      alert("1")
       var rdr = new FileReader();
       rdr.onload = function(e) {
         //get the rows into an array
@@ -70,7 +64,7 @@
           $('#tableMain').append(newrow);
         }
       }
-      rdr.readAsText($("#inputfile")[0].files[0]);
+      rdr.readAsText($("#id_file")[0].files[0]);
     });
 
   });
@@ -78,6 +72,8 @@
 
   $('.tableMain').DataTable();
 </script>
+{% endblock %}
+
 
 
 {% endblock%}

@@ -5,6 +5,7 @@ from django.urls import path , include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('myapp/',include('myapp.urls')),
-    path('upload/',include('intrestcalc.urls')),
+    path('',include('intrestcalc.urls')),
+    path('validatefile/',include('intrestcalc.urls'))
 
 ]

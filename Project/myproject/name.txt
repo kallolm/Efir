@@ -1,0 +1,4 @@
+NAME,AGE,INTRESTRATE
+kallol,1,9.8
+vikas,23,7.2
+randon,kk,3

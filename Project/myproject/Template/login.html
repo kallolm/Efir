@@ -1,16 +1,21 @@
+
 {% extends "home.html" %}
+{% load crispy_forms_tags %}
+
 {% block title %}
+
 My Hello Page
 {% endblock %}
 {% block content %}
+
 <div class="container">
   <center>
-        <form method="POST">
+        <form method="POST" class="uniForm">
         {% csrf_token %}
-        {{form.as_p}}
+        {{form | crispy }}
             <button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Login</button>
         </form>
-        Don't have an account? <a href="/signup" target="blank"><strong>register here</strong></a>!
+        Don't have an account? <a href="/login" target="blank"><strong>register here</strong></a>!
         </center>
     </div>
 {% endblock %}
